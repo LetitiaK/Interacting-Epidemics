@@ -42,37 +42,13 @@ In order to sort the edges accordingly, four lists are created. Then, a for-loop
 
 ## Transmission and Recovery
 
-Both the transmission of the malware as well as the recovery from an infection are modeled
-using Bernoulli trials. The outcome of Bernoulli trials can be represented as vectors of predefined
-length of independent dichotomous trials with fixed probability of success on each trial.
-The outcome of each trial can be either 1 (i.e. success) or 0 (i.e. failure) (for more details, see,
-e.g., [DS12]). In this case, a success means either the transmission along a certain edge or the
-recovery of a certain vertex. In R, the Bernoulli trial is implemented using the rbinom(N,n,p)
-function (binomial distribution) and setting n = 1.
-In Listing 3, the transmission process is depicted exemplarily for malware A. The transmission
-process for malware B is defined equivalently. As mentioned above, the rbinom(N,n,p) function
-is used for selection purposes (see Listing 3, Lines: 3-4). In particular, one differentiates
-between those cases, in which N is the number of edges along which the malware is transmitted
-with normal transmission probability and p = alpha_A (Line: 3) and those cases, in which
-N is the number of edges along which the malware is transmitted with increased transmission
-probability and p = alpha_A + beta_A (Line: 4) (for more details see also Section 6.2.2). Those
-edges, for which the Bernoulli trials return a success (i.e. are equal to 1) are selected and saved
-in the variables transmitter.edges_normal_A and transmitter.edges_high_A, respectively (Lines:
-7-10). In the next step, the vertices of the selected edges are extracted and saved as a vector.
-In order to avoid duplicate vertices in this vector unique is used (Lines: 13-14). Finally, the
-selected vertices are set to TRUE in the logical vector infected_A of malware A (Lines: 17-18).
-In Listing 4, the recovery process is depicted exemplarily for malware A (the transmission
-process for malware B is defined equivalently). Depending on the variable recovery.wait_A
-(see Section 6.2.1) the recovery process is executed during time step 1 or during time step 2 at
-the earliest (see Listing 4, Line: 5). If the recovery process is executed, all infected vertices
-are selected by picking all those vertices for which the logical vector infected_A of malware A
-evaluates to TRUE (Line: 6). Then, a Bernoulli trial (see above) is used to determine, which
-vertices will recover during the respective time step. In this case, N is the number of currently
-infected vertices and p is the recovery probability gamma_A (Lines: 7-8). Subsequently, those
-vertices, for which the Bernoulli trial returns a success (i.e. is equal to 1), are selected (Line: 9).
-Because the logical vector infected_A represents only a binary logic, NA is used to implement
-a ternary logic. In this way, all three statuses (susceptible, infected and recovered) can be
-represented within one vector. Hence, all recovered vertices are set to NA in the logical vector
-(Line: 10).
+Both the transmission of the malware as well as the recovery from an infection are modeled using Bernoulli trials. The outcome of Bernoulli trials can be represented as vectors of predefined length of independent dichotomous trials with fixed probability of success on each trial. The outcome of each trial can be either 1 (i.e. success) or 0 (i.e. failure). In this case, a success means either the transmission along a certain edge or the recovery of a certain vertex. In R, the Bernoulli trial is implemented using the rbinom(N,n,p) function (binomial distribution) and setting n = 1.
+
+As mentioned above, the rbinom(N,n,p) function is used for selection purposes. In particular, one differentiates between those cases, in which N is the number of edges along which the malware is transmitted with normal transmission probability and p = alpha_A and those cases, in which N is the number of edges along which the malware is transmitted with increased transmission
+probability and p = alpha_A + beta_A. Those edges, for which the Bernoulli trials return a success (i.e. are equal to 1) are selected and saved in the variables transmitter.edges_normal_A and transmitter.edges_high_A, respectively. In the next step, the vertices of the selected edges are extracted and saved as a vector. In order to avoid duplicate vertices in this vector "unique" is used. Finally, the
+selected vertices are set to TRUE in the logical vector infected_A of malware A.
+
+Depending on the variable recovery.wait_A the recovery process is executed during time step 1 or during time step 2 at
+the earliest. If the recovery process is executed, all infected vertices are selected by picking all those vertices for which the logical vector infected_A of malware A evaluates to TRUE. Then, a Bernoulli trial (see above) is used to determine, which vertices will recover during the respective time step. In this case, N is the number of currently infected vertices and p is the recovery probability gamma_A. Subsequently, those vertices, for which the Bernoulli trial returns a success (i.e. is equal to 1), are selected. Because the logical vector infected_A represents only a binary logic, NA is used to implement a ternary logic. In this way, all three statuses (susceptible, infected and recovered) can be represented within one vector. Hence, all recovered vertices are set to NA in the logical vector.
 
 # References
