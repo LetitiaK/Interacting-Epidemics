@@ -6,7 +6,7 @@ In this case, an existing model for increased susceptibility of infectious disea
 
 # The SIR x SIR Model
 
-Chen et al. proposed a simple SIR model of fixed population size with the two diseases A and B. They proposed that “the infection rate for disease A is increased, if the individual has or had disease B and vice versa”. In this model, the authors only consider cases of super-infection and do not include cases of co-infection. Furthermore, they assume that an individual cannot recover simultaneously from both infections in case of a dual infection. Hence, for each individual, there are nine possible states and two different infection rates. 
+Chen et al. proposed a simple SIR (Susceptible, Infected, Recovered) model of fixed population size with the two diseases A and B. They proposed that “the infection rate for disease A is increased, if the individual has or had disease B and vice versa”. In this model, the authors only consider cases of super-infection and do not include cases of co-infection. Furthermore, they assume that an individual cannot recover simultaneously from both infections in case of a dual infection. Hence, for each individual, there are nine possible states and two different infection rates. 
 
 In order to fit this SIR x SIR model to the context of malware, several modifications were performed. 
 
