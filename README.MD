@@ -17,6 +17,8 @@ the average percentage of people who click on malicious links or open malicious 
 
 # Implementation
 
+This code can be run in R Studio. Note that the graph dataset must be in the edgelist format (.csv).
+
 ## Initialization
 
 The implementation allows to specify several initial conditions for the simulation(s). 
@@ -52,3 +54,13 @@ Depending on the variable recovery.wait_A the recovery process is executed durin
 the earliest. If the recovery process is executed, all infected vertices are selected by picking all those vertices for which the logical vector infected_A of malware A evaluates to TRUE. Then, a Bernoulli trial (see above) is used to determine, which vertices will recover during the respective time step. In this case, N is the number of currently infected vertices and p is the recovery probability gamma_A. Subsequently, those vertices, for which the Bernoulli trial returns a success (i.e. is equal to 1), are selected. Because the logical vector infected_A represents only a binary logic, NA is used to implement a ternary logic. In this way, all three statuses (susceptible, infected and recovered) can be represented within one vector. Hence, all recovered vertices are set to NA in the logical vector.
 
 # References
+
+[1] L. Chen, F. Ghanbarnejad, W. Cai, and P. Grassberger. Outbreaks of coinfections: the critical role of cooperativity. EPL (Europhysics Letters), 104(5):1234–1238, 2013.
+
+[2] Verizon. 2016 Data Breach Investigations Report. Technical report, Verizon, 2016.
+
+[3] Cisco Systems Inc. Cisco 2015 Midyear Security Report. Technical report, Cisco Systems Inc., 2015.
+
+[4] V. Mueller. Network models of epidemics. http://www:tb:ethz:ch/education/learningmaterials/modelingcourse/level-2-modules/network:html, 2016. (Accessed: 23.08.2017).
+
+[5] M. H. DeGroot and M. J. Schervish. Probability and Statistics. Addison-Wesley, 2012.
