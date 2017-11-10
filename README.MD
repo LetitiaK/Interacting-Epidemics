@@ -30,43 +30,15 @@ The implementation allows to specify several initial conditions for the simulati
 
 ## Selection of Edges
 
-In order to implement the interaction between the two malicious software programs A and B (i.e.
-the increased transmission probability), the edges, along which the malware can be transmitted
-need to be sorted into four different categories. In particular, one differentiates between those
-edges along which the malicious software programs A and B are transmitted with the normal
-transmission probability and those edges along which A and B are transmitted with an increased
-transmission probability. Therefore, the program iterates through the entire edge list of a graph
-and sorts the edges based on the schemata given in Figure 27 and Figure 28.
-If a vertex that is infected with malware A (state A) is connected with another vertex that is
-either not infected at all (state S) or that has already recovered from malware B (state b), then
-this vertex transmits malware A with the normal transmission probability. Vice versa, a vertex
-infected with malware B (state B) transmits B with normal transmission probability to those
-vertices that are either not infected at all (state S) or that have already recovered from malware
-A (state a). Figure 27 (a) shows all possible constellations between two vertices for malware A.
-Similarly, Figure 27 (b) shows all these possible constellations for malware B28.
-If a vertex that is infected with malware A (states A, AB and Ab) is connected to a vertex that is
-currently infected with malware B (state B), then this vertex transmits A with an increased probability.
-Figure 28 (a) shows all these possible constellations between two vertices for malware
-A. Similarly, a vertex that is currently infected with malware B (states B,AB and Ba) transmits
-B with an increased transmission probability to those vertices that are currently infected with
-malware A (state A). Figure 28 (b) shows all these possible constellations for malware B.
+In order to implement the interaction between the two malicious software programs A and B (i.e. the increased transmission probability), the edges, along which the malware can be transmitted need to be sorted into four different categories. In particular, one differentiates between those edges along which the malicious software programs A and B are transmitted with the normal transmission probability and those edges along which A and B are transmitted with an increased transmission probability. Therefore, the program iterates through the entire edge list of a graph and sorts the edges. 
 
-In order to sort the edges accordingly, four lists are created (see Listing 2, Lines: 5-8). Then, a
-for-loop is used to iterate through the edge list of the graph (see Listing 2, Line: 12).
+If a vertex that is infected with malware A is connected with another vertex that is either not infected at all or that has already recovered from malware B, then this vertex transmits malware A with the normal transmission probability. Vice versa, a vertex
+infected with malware B transmits B with normal transmission probability to those vertices that are either not infected at all or that have already recovered from malware A. 
 
-The following code (Listing 2, Lines: 14-26) shows exemplarily, how the edge between vertex 1
-and 2 in Figure 29 is sorted into the two lists highrisk.edges_A and highrisk.edges_B. As can be
-seen in Figure 28 (a) and (b), the edge between vertex 1 and 2 in Figure 29 offers an increased
-transmission probability for both malicious software programs A and B.
 
-In particular, the first if-statement (Line 16) is used to verify whether vertex 1 is only infected
-with malware A. Therefore, the logical vector of malware A (infected_A) must be TRUE for
-vertex 1 and the logical vector of malware B (infected_B) must be FALSE for vertex 129. Similarly,
-the second if-statement (Line: 20) is used to validate whether vertex 2 is only infected
-with malware B. Subsequently, the edge is saved in the respective lists (Lines: 22-23). For
-optimization purposes next (Line: 26) is used to jump directly to the next edge as soon as the
-current edge is categorized. Following this approach, suitable if-statements are formulated for
-each possibility (see Figure 27 and Figure 28).
+If a vertex that is infected with malware A is connected to a vertex that is currently infected with malware B, then this vertex transmits A with an increased probability. Similarly, a vertex that is currently infected with malware B transmits B with an increased transmission probability to those vertices that are currently infected with malware A.
+
+In order to sort the edges accordingly, four lists are created. Then, a for-loop is used to iterate through the edge list of the graph. For example, a first if-statement is used to verify whether a vertex is only infected with malware A. Therefore, the logical vector of malware A (infected_A) must be TRUE for the vertex and the logical vector of malware B (infected_B) must be FALSE for the other vertex. Similarly, a second if-statement is used to validate whether the second vertex is only infected with malware B. Subsequently, the edge is saved in the respective lists. For optimization purposes "next" is used to jump directly to the next edge as soon as the current edge is categorized. Following this approach, suitable if-statements are formulated for each possibility.
 
 ## Transmission and Recovery
 
