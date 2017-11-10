@@ -6,7 +6,7 @@ library(animation)
 library(xtable)
 
 # Set the working directory
-setwd("C:/Users/Lilly/Desktop/R_Epidemics/Animation/PA_7_1_random")
+setwd("[Insert your working directory here]")
 
 # Import the dataset (.csv)
 dat=read.csv(file.choose(),header=TRUE)
