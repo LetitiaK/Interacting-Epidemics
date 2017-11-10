@@ -20,13 +20,12 @@ the average percentage of people who click on malicious links or open malicious 
 ## Initialization
 
 The implementation allows to specify several initial conditions for the simulation(s). 
-* In particular, the variables init_inf_A and init_inf_B determine the number of initially infected vertices. Per default for the simulations, the number of initially infected vertices is either equal to one (i.e. a single vertex) or equal to one percent of the vertices in the graph. 
-* The variables alpha_A and alpha_B represent the normal transmission probability, which is per default equal for both malicious software programs. 
-* The variables beta_A and beta_B represent the increase of the transmission probability. This means that for malware B the increased transmission probability is equal to alpha_B + beta_B (0.13 + 0.27 = 0.40). For malware A, the increase of the transmission probability is equal to zero (i.e. no increased transmission probability). Using this approach facilitates later simulations with mutually increasing susceptibility (or transmissibility) or differently increasing transmission probabilities.
-* The variables gamma_A and gamma_B represent the recovery probability. Per default the recovery probability is always equal for both malicious software programs and is either equal to 0.04 or 0.14.
-* The variables simlength and simnumber determine the number of time steps and the number of simulations, respectively. 
-* The variable plot.spread is used to enable or disable the plotting of the graph. This should be set to TRUE only if the graph is
-reasonably small.
+* In particular, the variables init_inf_A and init_inf_B determine the number of initially infected vertices. Per default for the simulations, the number of initially infected vertices is equal to one (i.e. a single vertex). 
+* The variables alpha_A and alpha_B represent the normal transmission probability, which is per default equal for both malicious software programs and is set to 0.13. 
+* The variables beta_A and beta_B represent the increase of the transmission probability. This means that for malware B the increased transmission probability is equal to alpha_B + beta_B (per default  0.13 + 0.27 = 0.40). For malware A, the increase of the transmission probability is per default equal to zero (i.e. no increased transmission probability). Using this approach facilitates later simulations with mutually increasing susceptibility (or transmissibility) or differently increasing transmission probabilities.
+* The variables gamma_A and gamma_B represent the recovery probability. Per default the recovery probability is equal for both malicious software programs and is either equal to 0.14.
+* The variables simlength (default: 70) and simnumber (default: 500) determine the number of time steps and the number of simulations, respectively.  
+* The variable plot.spread is used to enable or disable the plotting of the graph (default: FALSE). This should be set to TRUE only if the graph is reasonably small.
 * Finally, the variables recovery.wait_A and recovery.wait_B are used to determine whether the initially infected vertices can recover from time step 0 to time step 1. If this variable is set to FALSE, the initially infected vertices can recover during this first time step, meaning that the epidemic might immediately die out from time step 0 to time step 1. Per default, these two variables are set to TRUE, meaning that the initially infected vertices can only recover from the second time step onwards (i.e. from time step 1 to time step 2 at the earliest).
 
 ## Selection of Edges
