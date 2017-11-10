@@ -61,6 +61,6 @@ the earliest. If the recovery process is executed, all infected vertices are sel
 
 [3] Cisco Systems Inc. Cisco 2015 Midyear Security Report. Technical report, Cisco Systems Inc., 2015.
 
-[4] V. Mueller. Network models of epidemics. http://www:tb:ethz:ch/education/learningmaterials/modelingcourse/level-2-modules/network:html, 2016. (Accessed: 23.08.2017).
+[4] V. Mueller. Network models of epidemics. http://www:tb:ethz:ch/education/learningmaterials/modelingcourse/level-2-modules/network:html, 2016.
 
 [5] M. H. DeGroot and M. J. Schervish. Probability and Statistics. Addison-Wesley, 2012.
