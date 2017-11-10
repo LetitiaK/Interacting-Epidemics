@@ -19,36 +19,15 @@ the average percentage of people who click on malicious links or open malicious 
 
 ## Initialization
 
-The implementation allows to specify several initial conditions for the simulation(s), which are
-depicted in Listing 1. In particular, the variables init_inf_A and init_inf_B (see Listing 1, Lines:
-2-3) determine the number of initially infected vertices. Note that within this thesis, the number
-of initially infected vertices is always equal for both malicious software programs in order to
-ensure that differences in the spreading behavior can be ascribed to interactions and are not
-due to a larger number of initially infected vertices. For the simulations, the number of initially
-infected vertices is either equal to one (i.e. a single vertex) or equal to one percent of the vertices
-in the graph.
-The variables alpha_A and alpha_B (Lines: 6-7) represent the normal transmission probability,
-which is always equal for both malicious software programs within this thesis. The variables
-beta_A and beta_B (Lines: 10-11) represent the increase of the transmission probability. This
-means that for malware B the increased transmission probability is equal to alpha_B + beta_B
-(0.13 + 0.27 = 0.40). For malware A, the increase of the transmission probability is equal
-to zero (i.e. no increased transmission probability). Using this approach facilitates later simulations
-with mutually increasing susceptibility (or transmissibility) or differently increasing
-transmission probabilities.
-
-The variables gamma_A and gamma_B (Lines: 14-15) represent the recovery probability. As
-mentioned before, within this thesis the recovery probability is always equal for both malicious
-software programs and is either equal to 0.04 or 0.14.
-The variables simlength and simnumber (Lines: 18 & 20) determine the number of time steps
-and the number of simulations, respectively. The variable plot.spread (Line: 25) is used to
-enable or disable the plotting of the graph. This should be set to TRUE only if the graph is
+The implementation allows to specify several initial conditions for the simulation(s). 
+* In particular, the variables init_inf_A and init_inf_B determine the number of initially infected vertices. Per default for the simulations, the number of initially infected vertices is either equal to one (i.e. a single vertex) or equal to one percent of the vertices in the graph. 
+* The variables alpha_A and alpha_B represent the normal transmission probability, which is per default equal for both malicious software programs. 
+* The variables beta_A and beta_B represent the increase of the transmission probability. This means that for malware B the increased transmission probability is equal to alpha_B + beta_B (0.13 + 0.27 = 0.40). For malware A, the increase of the transmission probability is equal to zero (i.e. no increased transmission probability). Using this approach facilitates later simulations with mutually increasing susceptibility (or transmissibility) or differently increasing transmission probabilities.
+* The variables gamma_A and gamma_B represent the recovery probability. Per default the recovery probability is always equal for both malicious software programs and is either equal to 0.04 or 0.14.
+* The variables simlength and simnumber determine the number of time steps and the number of simulations, respectively. 
+* The variable plot.spread is used to enable or disable the plotting of the graph. This should be set to TRUE only if the graph is
 reasonably small.
-Finally, the variables recovery.wait_A and recovery.wait_B (Lines: 27-28) are used to determine
-whether the initially infected vertices can recover from time step 0 to time step 1. If this variable
-is set to FALSE, the initially infected vertices can recover during this first time step, meaning
-that the epidemic might immediately die out from time step 0 to time step 1. Within this thesis,
-these two variables are always set to TRUE, meaning that the initially infected vertices can only
-recover from the second time step onwards (i.e. from time step 1 to time step 2 at the earliest).
+* Finally, the variables recovery.wait_A and recovery.wait_B are used to determine whether the initially infected vertices can recover from time step 0 to time step 1. If this variable is set to FALSE, the initially infected vertices can recover during this first time step, meaning that the epidemic might immediately die out from time step 0 to time step 1. Per default, these two variables are set to TRUE, meaning that the initially infected vertices can only recover from the second time step onwards (i.e. from time step 1 to time step 2 at the earliest).
 
 ## Selection of Edges
 
